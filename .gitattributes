@@ -1,0 +1,7 @@
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+
+# Normalize the repository:
+# git add --normalize .
+# git commit -m "Normalize line endings to lf"
