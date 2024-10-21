@@ -51,7 +51,7 @@ function renderCart() {
 
 /**
  * Viser en varsling som indikerer at handlekurven har blitt oppdatert.
- * Varslingen vises i 2 sekunder før den forsvinner automatisk.
+ * Varslingen vises i 3 sekunder før den forsvinner automatisk.
  */
 function showCartNotification() {
   const notification = document.getElementById('cartNotification');
@@ -59,5 +59,5 @@ function showCartNotification() {
 
   setTimeout(() => {
     notification.classList.remove('show');
-  }, 2000);
+  }, 3000);
 }
