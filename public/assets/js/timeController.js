@@ -1,4 +1,13 @@
-// Funksjon for å generere tidspunkter for henting basert på valgt dato
+/**
+ * Genererer tidspunkter for henting basert på valgt dato.
+ *
+ * Denne funksjonen oppdaterer tidspunktsvalget i hentetidsdropdown basert på
+ * den valgte datoen. Hvis datoen er søndag, viser den en melding om at ingen
+ * tider er tilgjengelige. For hver ukedag, setter den åpning og lukketid,
+ * og genererer tidspunkter i 30-minutters intervaller mellom åpning og lukketid.
+ *
+ * @param {string} pickupDate - Den valgte hentedatoen i formatet YYYY-MM-DD.
+ */
 function generateTimeOptions(pickupDate) {
   const timeSelect = document.getElementById('pickupTime');
   timeSelect.innerHTML = '';
@@ -34,12 +43,20 @@ function generateTimeOptions(pickupDate) {
   }
 }
 
-// Funksjon for å validere hentetid
+/**
+ * Validerer hentetid ved å sikre at en tid er valgt.
+ *
+ * Denne funksjonen sjekker om en hentetid er valgt av brukeren.
+ *
+ * @param {string} pickupDate - Den valgte hentedatoen.
+ * @param {string} pickupTime - Den valgte hentetiden.
+ * @returns {boolean} - Returnerer true hvis en hentetid er valgt, ellers false.
+ */
 function validatePickupTime(pickupDate, pickupTime) {
   return pickupTime !== '';
 }
 
-document.getElementById('pickupDate').addEventListener('change', function() {
+document.getElementById('pickupDate').addEventListener('change', function () {
   const pickupDate = document.getElementById('pickupDate').value;
   generateTimeOptions(pickupDate);
 });

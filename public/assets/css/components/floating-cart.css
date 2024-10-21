@@ -1,0 +1,136 @@
+/* Mobile-first: Floating Cart Button */
+.cart-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--dark-forest-green);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cart-float:hover {
+  background-color: var(--soft-green);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  color: white;
+}
+
+.cart-float svg {
+  width: 48px;
+  height: 48px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--soft-green);
+  color: white;
+  border-radius: 50%;
+  padding: 3px;
+  font-size: 0.8rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Larger Cart Button for Desktop */
+@media (min-width: 768px) {
+  .cart-float {
+    width: 80px;
+    height: 80px;
+  }
+
+  .cart-float svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .cart-count {
+    width: 22px;
+    height: 22px;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cart-float {
+    width: 150px; /* Bigger for larger desktop screens */
+    height: 150px;
+  }
+
+  .cart-float svg {
+    width: 64px; /* Bigger icon */
+    height: 64px;
+  }
+
+  .cart-count {
+    width: 48px; /* Larger cart count */
+    height: 48px;
+    font-size: 1.5rem;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.cart-bounce {
+  animation: bounce 0.5s ease-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cart-pulse {
+  animation: pulse 0.6s ease-in-out;
+}
+
+.cart-notification {
+  position: absolute;
+  top: calc(var(--header-height) + 1.5em);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #FFA500;
+  color: white;
+  padding: 1em 2em;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+
+.cart-notification.show {
+  opacity: 1;
+  visibility: visible;
+}
+

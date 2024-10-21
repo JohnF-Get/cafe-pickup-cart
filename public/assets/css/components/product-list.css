@@ -1,0 +1,144 @@
+:root {
+  --primary-color: var(--soft-green);
+  --primary-hover-color: var(--dark-forest-green);
+  --secondary-color: var(--olive-green);
+  --light-bg-color: var(--light-cream);
+  --text-color: var(--charcoal);
+  --border-radius: 10px;
+}
+
+/* Card container styling */
+.card {
+  background-color: var(--light-cream);
+  border: 1px solid var(--olive-green);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+/* Card content */
+.card__title {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.card__title:hover {
+  color: var(--primary-color);
+}
+
+.card__img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card__price {
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Flexbox layout for quantity label, input, and button */
+.card__action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Align input and button on the same line */
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Quantity label and input */
+.card__quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card__quantity-label {
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.card__quantity-input {
+  padding: 8px;
+  border: 1px solid var(--olive-green);
+  border-radius: 6px;
+  font-size: 1rem;
+  text-align: center;
+  width: 60px; /* Fixed width for the quantity input */
+}
+
+/* Modern add-to-cart button */
+.card__btn {
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  background-color: var(--primary-color);
+  color: #fff;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  white-space: nowrap;
+}
+
+.card__btn:hover {
+  background-color: var(--primary-hover-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card__btn:active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+.card__btn::before {
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>');
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+  height: 24px;
+  width: 24px;
+}
+
+/* Product list (Mobile-first: 1 column) */
+.product-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Desktop and Tablet Styles */
+@media (min-width: 768px) {
+  .card__action {
+    margin: 1em auto 1em;
+    padding: 0 2em;
+  }
+
+  .card__btn {
+    width: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-list {
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    max-width: 1200px;
+    margin: 2em auto;
+  }
+}

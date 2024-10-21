@@ -1,4 +1,17 @@
-// Funksjon for å bekrefte ordre
+/**
+ * Bekrefter en ordre ved å validere brukerinput og oppdatere handlekurven.
+ *
+ * Denne funksjonen utfører følgende trinn:
+ * 1. Henter brukerens valg for hentedato og hentetid, samt kundens navn, e-post og telefonnummer.
+ * 2. Validerer telefonnummeret for å sikre at det består av nøyaktig 8 sifre.
+ * 3. Validerer at en gyldig hentetid er valgt.
+ * 4. Sjekker at alle feltene er fylt ut.
+ * 5. Viser en bekreftelsesmelding til brukeren med bestillingsdetaljer.
+ * 6. Lukker utsjekkingsmodulen, tømmer handlekurven og oppdaterer handlekurvvisningen.
+ *
+ * @function
+ * @returns {void}
+ */
 function confirmOrder() {
   const pickupDate = document.getElementById('pickupDate').value;
   const pickupTime = document.getElementById('pickupTime').value;
@@ -6,29 +19,32 @@ function confirmOrder() {
   const customerEmail = document.getElementById('customerEmail').value;
   const customerPhone = document.getElementById('customerPhone').value;
 
-  // Valider telefonnummeret (nøyaktig 8 sifre)
   if (!validatePhoneNumber(customerPhone)) {
     alert('Telefonnummeret må være 8 sifre.');
     return;
   }
 
-  // Valider at hentetid er valgt
   if (!validatePickupTime(pickupDate, pickupTime)) {
     alert('Vennligst velg en gyldig tid.');
     return;
   }
 
-  // Valider at alle feltene er fylt ut
-  if (!pickupDate || !pickupTime || !customerName || !customerEmail || !customerPhone) {
+  if (
+    !pickupDate ||
+    !pickupTime ||
+    !customerName ||
+    !customerEmail ||
+    !customerPhone
+  ) {
     alert('Vennligst fyll ut alle feltene.');
     return;
   }
 
-  // Bestilling bekreftet, vis melding til brukeren
-  alert(`Bestilling bekreftet!\nNavn: ${customerName}\nDato: ${pickupDate}\nTid: ${pickupTime}`);
+  alert(
+    `Bestilling bekreftet!\nNavn: ${customerName}\nDato: ${pickupDate}\nTid: ${pickupTime}`,
+  );
 
-  // Tøm handlekurven etter bekreftet bestilling
   closeCheckoutModal();
-  clearCart(); // Funksjon fra model.js for å tømme handlekurven
-  updateCart(); // Oppdater handlekurvvisningen etter tømming
+  clearCart();
+  updateCart();
 }

@@ -1,0 +1,59 @@
+/* Mobile-first Tab styles */
+.tabs {
+  border-bottom: 4px solid var(--dark-forest-green);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.tabs-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 1em;
+  margin: 2em 2em 0;
+  padding: 10px 0 0;
+}
+
+.tabs__button {
+  flex: 1;
+  text-align: center;
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  background-color: var(--light-cream);
+  border-radius: 5px 5px 0 0;
+  border: 1px solid var(--olive-green);
+  border-bottom: 4px solid transparent; /* Default state */
+  color: var(--charcoal);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tabs__button:hover {
+  color: var(--soft-green); /* Hover color */
+}
+
+.tabs__button--active {
+  background-color: var(--dark-forest-green);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px 5px 0 0;
+}
+
+.tabs__button:hover {
+  background-color: var(--olive-green);
+  color: #fff;
+}
+
+.tabs__button:focus {
+  outline: none;
+  box-shadow: 0 0 5px var(--soft-green);
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .tabs-container {
+    justify-content: flex-start;
+    gap: 2em;
+  }
+}
+
+

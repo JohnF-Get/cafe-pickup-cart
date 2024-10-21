@@ -2,102 +2,137 @@
 <html lang="no">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bakst og Brygg - Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Bakst og Brygg - Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online." name="description">
   <title>Bakst og Brygg</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="assets/css/styles.css" rel="stylesheet">
 </head>
 <body>
 
-<header class="header">
-  <div class="header__logo">
-    <a href="./index.html"><img src="assets/images/logo.webp" alt="Bakst og Brygg logo" class="header__logo-img"></a>
-  </div>
-  <nav class="header__menu">
-    <ul>
-      <li><a href="#" data-category="meny">Meny</a></li>
-      <li><a href="#" data-category="kake">Kaker</a></li>
-      <li><a href="#" data-category="temakaker">Temakaker</a></li>
-    </ul>
-  </nav>
-  <div class="header__cart">
-    <a href="#" id="cartLink">Handlekurv (<span id="cart-count">0</span>)</a>
-  </div>
-</header>
+<div class="wrapper">
+  <!-- Header Section -->
+  <header class="header" role="banner">
+    <div class="header__logo" id="headerLogo">
+      <img alt="Bakst og Brygg logo" class="header__logo-img" src="assets/images/logo.webp">
+    </div>
+    <nav aria-label="Hovedmeny" class="header__nav">
+      <ul class="header__menu" role="menu">
+        <li class="header__menu-item" role="menuitem"><a class="header__menu-link" data-category="meny"
+                                                         href="#">Meny</a></li>
+        <li class="header__menu-item" role="menuitem"><a class="header__menu-link" data-category="kake"
+                                                         href="#">Kaker</a></li>
+        <li class="header__menu-item" role="menuitem"><a class="header__menu-link" data-category="temakaker" href="#">Temakaker</a>
+        </li>
+      </ul>
+    </nav>
+    <button aria-expanded="false" aria-label="Toggle menu" class="header__menu-toggle">
+      <span></span>
+    </button>
+  </header>
 
-<main class="main-content">
-  <div id="menuTabs" class="tabs">
-    <button class="tab-btn primary" data-category="baguetter">Baguetter</button>
-    <button class="tab-btn secondary" data-category="snitter">Snitter</button>
-    <button class="tab-btn secondary" data-category="kaffe">Kaffe</button>
+  <div class="cart-notification" id="cartNotification">Produkt lagt til i handlekurven!</div>
+
+  <!-- Main Content Section -->
+  <main class="main-content" role="main">
+    <div class="tabs" id="menuTabs">
+      <div class="tabs-container" role="tablist">
+        <button aria-selected="true" class="tabs__button tabs__button--active" data-category="baguetter" role="tab">
+          Baguetter
+        </button>
+        <button aria-selected="false" class="tabs__button" data-category="snitter" role="tab">Snitter</button>
+        <button aria-selected="false" class="tabs__button" data-category="kaffe" role="tab">Kaffe</button>
+      </div>
+    </div>
+
+    <div class="product-list" id="productList">
+      <!-- Produktene vises her -->
+    </div>
+  </main>
+
+  <!-- Cart Overlay Section -->
+  <div aria-label="Handlekurv" aria-modal="true" class="cart-overlay" id="cart" role="dialog">
+    <a aria-label="Lukk handlekurv" class="closebtn" href="#" id="closeCartBtn">&times;</a>
+    <div class="cart-content">
+      <h2>Handlekurv</h2>
+      <div aria-live="polite" class="cart-items" id="cart-items"></div>
+      <div class="cart-total-container">
+        <p>Totalt: &nbsp;</p>
+        <span aria-live="polite" id="cart-total">0</span>&nbsp; kr
+      </div>
+
+      <button disabled id="checkoutButton">Til kassen</button>
+    </div>
   </div>
 
-  <div id="productList" class="product-list">
-    <!-- Produktene vises her -->
-  </div>
-</main>
 
-<div id="cart" class="cart-overlay">
-  <a href="#" class="closebtn" id="closeCartBtn">&times;</a>
-  <div class="cart-content">
-    <h2>Handlekurv</h2>
-    <div id="cart-items"></div>
-    <p>Totalt: NOK <span id="cart-total">0</span></p>
-    <button id="checkoutButton" disabled>Til kassen</button>
-  </div>
+  <!-- Floating Cart Button -->
+  <a aria-label="Handlekurv" class="cart-float" href="#" id="cartLink">
+    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45C5.16 14.28 5.25 14.61 5.25 15c0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21L4.27 2H1zm16 0c1.1 0 1.99.9 1.99 2S18.1 6 17 6s-2-.9-2-2 .9-2 2-2z" />
+    </svg>
+    <span class="cart-count" id="cart-count">0</span>
+  </a>
+
+  <!-- Footer Section -->
+  <footer class="footer" role="contentinfo">
+    <p>Adresse: Oslo, Norge</p>
+    <p>Telefon: +47 123 45 678</p>
+    <p>E-post: post@bakstogbrygg.no</p>
+    <p>Åpningstider: Mandag-Fredag 08:00-16:00, Lørdag 09:00-15:00</p>
+    <a aria-label="Ansatt innlogging" href="#login">Ansatt innlogging</a>
+  </footer>
 </div>
 
-<footer class="footer">
-  <p>Adresse: Oslo, Norge</p>
-  <p>Telefon: +47 123 45 678</p>
-  <p>E-post: post@bakstogbrygg.no</p>
-  <p>Åpningstider: Mandag-Fredag 08:00-16:00, Lørdag 09:00-15:00</p>
-  <a href="#login">Ansatt innlogging</a>
-</footer>
-
-<div id="productModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn" id="closeProductModal">&times;</span>
+<!-- Product Modal -->
+<div aria-labelledby="modalProductContent" aria-modal="true" class="modal modal--product" id="productModal"
+     role="dialog">
+  <div class="modal__content">
+    <span aria-label="Lukk produktmodalen" class="modal__close-btn" id="closeProductModal">&times;</span>
     <div id="modalProductContent">
       <!-- Produktinformasjon vises her -->
     </div>
   </div>
 </div>
 
-<div id="checkoutModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn" id="closeCheckoutModal">&times;</span>
-    <h3>Fullfør bestillingen</h3>
+<!-- Checkout Modal -->
+<div aria-labelledby="checkout-heading" aria-modal="true" class="modal modal--checkout" id="checkoutModal"
+     role="dialog">
+  <div class="modal__content">
+    <span aria-label="Lukk checkoutmodalen" class="modal__close-btn" id="closeCheckoutModal">&times;</span>
+    <h3 class="modal__heading" id="checkout-heading">Fullfør bestillingen</h3>
+    <form class="modal__form" id="checkoutForm" role="form">
+      <label class="modal__label" for="pickupDate">Velg dato for henting:</label>
+      <input class="modal__input" id="pickupDate" required type="date">
 
-    <form id="checkoutForm">
-      <label for="pickupDate">Velg dato for henting:</label>
-      <input type="date" id="pickupDate" required>
+      <label class="modal__label" for="pickupTime">Velg tid for henting:</label>
+      <select class="modal__select" id="pickupTime" required></select>
 
-      <label for="pickupTime">Velg tid for henting:</label>
-      <select id="pickupTime" required>
-        <!-- Tidene for henting legges til her -->
-      </select>
+      <label class="modal__label" for="customerName">Navn:</label>
+      <input class="modal__input" id="customerName" placeholder="Navn" required type="text">
 
-      <label for="customerName">Navn:</label>
-      <input type="text" id="customerName" placeholder="Navn" required>
+      <label class="modal__label" for="customerEmail">E-post:</label>
+      <input class="modal__input" id="customerEmail" placeholder="E-post" required type="email">
 
-      <label for="customerEmail">E-post:</label>
-      <input type="email" id="customerEmail" placeholder="E-post" required>
+      <label class="modal__label" for="customerPhone">Telefon:</label>
+      <input class="modal__input" id="customerPhone" placeholder="Telefon" required type="tel">
 
-      <label for="customerPhone">Telefon:</label>
-      <input type="tel" id="customerPhone" placeholder="Telefon" required>
-
-      <button type="button" id="confirmOrderBtn">Bestill</button>
+      <button class="modal__button" id="confirmOrderBtn" type="button">Bestill</button>
     </form>
   </div>
 </div>
 
 <script src="assets/js/model.js"></script>
-<script src="assets/js/view.js"></script>
+<script src="assets/js/cartView.js"></script>
+<script src="assets/js/modalView.js"></script>
+<script src="assets/js/navView.js"></script>
 <script src="assets/js/cartController.js"></script>
+<script src="assets/js/eventController.js"></script>
 <script src="assets/js/productController.js"></script>
 <script src="assets/js/orderController.js"></script>
 <script src="assets/js/timeController.js"></script>
+<script src="assets/js/phoneController.js"></script>
+<script src="assets/js/mobileMenuToggleController.js"></script>
 
 </body>
 </html>
